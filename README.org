@@ -1,1 +1,6 @@
 * ISIMA-Beamer
+
+
+** Preview
+
+[[file:doc/screenshot.png]]
