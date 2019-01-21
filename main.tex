@@ -1,0 +1,364 @@
+
+\documentclass{isimabeamer}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\AtBeginSection[]{
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+    \usebeamerfont{title}\insertsectionhead\par%
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}
+}
+
+\title[Théorie des jeux: les jeux coopératifs]{Théorie des jeux: les jeux coopératifs}
+% Titre du diaporama
+
+\subtitle{application aux réseaux de communication}
+% Sous-titre optionnel
+
+\author{Rick Sanchez\inst{1}, Morty Smith\inst{2}}
+% La commande \inst{...} Permet d'afficher l' affiliation de l'intervenant.
+% Si il y a plusieurs intervenants: Marcel Dupont\inst{1}, Roger Durand\inst{2}
+% Il suffit alors d'ajouter un autre institut sur le modèle ci-dessous.
+
+\institute[ISIMA]
+{
+  \inst{1}%
+  Institut Supérieur d'Informatique, de Modélisation et de leurs Applications
+  \inst{2}%
+  Harry Herpson High School
+
+ }
+
+
+\date{19 décembre 2018}
+% Optionnel. La date, généralement celle du jour de la conférence
+
+\subject{Recette de la matière noire concentrée}
+% C'est utilisé dans les métadonnes du PDF
+
+
+
+\logo{
+\includegraphics[scale=0.20]{images/isima.png}
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+
+\begin{frame}{Sommaire}
+  \tableofcontents
+  % possibilité d'ajouter l'option [pausesections]
+\end{frame}
+
+
+\section{Introduction}
+
+\subsection{Contexte}
+\begin{frame}{Contexte}
+
+\begin{block}{Rappels théorie des jeux}
+\begin{itemize}
+    \item Théorie des jeux: cadre d'étude des interactions entre agents/joueurs
+    \item Nombreuses applications: ingénierie, psychologie, sociologie, politique etc. 
+    \item Deux branches principales: 
+    \begin{itemize}
+        \item non-coopératif: concurrence entre agents
+        \item \textbf{coopératif}: étude des comportements lorsque les agents coopèrent 
+    \end{itemize}
+    \end{itemize}
+\end{block}
+
+\begin{block}{La théorie des jeux dans les réseaux de communication}
+\begin{itemize}
+    \item En 2009 (date de l'article) surtout non-coopératif
+    \item \textbf{Mais} plusieurs articles démontrant que coopération = possibilités d'amélioration dans les couches basses du modèle OSI.  
+    \end{itemize}
+\end{block}
+\end{frame}
+
+\subsection{Problématique}
+\begin{frame}{Problématique}
+\begin{block}{Problèmes}
+\begin{itemize}
+    \item Recherche actuelle limitée 
+    \item Manque un cadre unifié pour appliquer jeux coopératifs aux réseaux 
+\end{itemize}
+\end{block}
+
+\begin{block}{But de l'article}
+\begin{itemize}
+    \item Présenter la théorie des jeux collaboratifs 
+    \item Proposer un cadre unifié sous forme de classification orientée ingénierie.
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}{Cadre proposé}
+\begin{block}{Classe I - Jeux canoniques}
+\begin{itemize}
+    \item Structure optimale: tous les joueurs
+    \item \textbf{Problématique}: Comment stabiliser?  
+\end{itemize}
+\end{block}
+
+\begin{block}{Classe II - Jeux de formation de coalition}
+\begin{itemize}
+    \item Se rassembler a un coût  
+    \item \textbf{Problématique}: Quelles structures vont se former | Comment les étudier?
+\end{itemize}
+\end{block}
+
+\begin{block}{Classe III - Jeux de graphes de coalition}
+\begin{itemize}
+    \item Communication entre les joueurs sous forme de graphe
+    \item \textbf{Problématique}: Comment stabiliser/créer une structure en prenant en compte le graphe de communication?
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+
+\section{Jeux de coalition - Bases}
+
+\begin{frame}{Bases}
+\begin{block}{Bases}
+\begin{itemize}
+    \item Fait intervenir un ensemble de joueurs $N = \left \{1,...,n \right \}$ avec $\text{card}(N) = n$.
+    \item Les joueurs cherchent à former des groupes pour améliorer leur score (gain++ ou perte--).
+    \item Un groupe ou coalition $S \subseteq N $ représente un accord entre les joueurs de $S$ pour agir en tant qu'entité. 
+\end{itemize}
+\end{block}
+
+\begin{block}{Bases - suite}
+\begin{itemize}
+    \item La valeur de coalition notée $v$ représente la valeur associée a une coalition.  
+    \item Un jeu de coalition est défini par un couple $(N,v)$
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+
+
+\section{Jeux de coalition canoniques}
+
+\subsection{Propriétés}
+
+\begin{frame}{Propriétés}
+\begin{block}{Propriétés}
+\begin{itemize}
+    \item Jeu sous forme caractéristique (TU ou NTU)
+    \item Super-additivité $v(S_1 \cup S_2) \ge v(S_1) + v(S_2)  \forall S_1 \subset  N, S_2 \subset N, S_1 \cap S_2 = \varnothing   $
+\end{itemize}
+\end{block}
+\begin{block}{Objectif}
+\begin{itemize}
+\item Propriété et stabilité de la grande coalition
+\item La distribution de gain d'une manière optimale
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+\subsection{Aspects importants}
+\begin{frame}{Aspects importants}
+\begin{block}{Aspects importants}
+\begin{itemize}
+    \item L'allocation optimale de gain aux joueurs de la grande coalition
+    \item L'assurance de l'équité dans le partage des gains de la grande coalition
+\end{itemize}
+\end{block}
+\end{frame}
+
+\subsection{Coeur / Core}
+\begin{frame}{Coeur / Core}
+\begin{block}{Définition (Coeur)}
+\begin{itemize}
+    \item Stabilité de la grande coalition
+    
+    $C_{TU} = \left \{ x: \sum_{i \in N} x_i = v (N) \text{ and } \sum_{i \in S} x_i \ge v(S) \forall S \subseteq N \right \}$
+    
+    \item L'assurance de l'équité dans le partage des gains de la grande coalition
+\end{itemize}
+\end{block}
+
+\begin{block}{Propriété et existence}
+\begin{itemize}
+    \item L'existence n'est pas garantie
+    \item Le coeur est vide $\rightarrow$ la coalition n'est pas stable    
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+
+
+\subsection{Valeur de Shapley}
+\begin{frame}{Valeur de Shapley}
+\begin{block}{Axiomes}
+\begin{enumerate}
+    \item \textbf{Efficacité}: $\sum_{i \in N} \phi_i(v) = v(N)$.
+    \item \textbf{Symétrie}: Si un joueur $i$ et un joueur $j$ sont tels que $v\left ( S \cup \left \{ i \right \} \right ) = v \left ( S \cup \left \{ j \right \} \right )$ pour toute coalition $S$ qui ne contient ni $i$ ni $j$, alors $\phi_i(v) = \phi_j(v)$. 
+    \item \textbf{Dummy player}: Si un joueur $i$ est tel que $v(S) = v\left ( S \cup \left \{ i \right \} \right )$ pour toute coalition $S$ qui ne contient pas $i$, alors $\phi_i(v) = 0$.
+    \item \textbf{Additivité}: Si $u$ et $v$ sont des fonctions caractéristique, alors $\phi(u+v) = \phi(u) + \phi(v)$.
+\end{enumerate}
+
+\end{block}
+
+
+\end{frame}
+
+\begin{frame}{Valeur de Shapley}
+\begin{block}{Propriétés}
+\begin{itemize}
+    \item Solution unique pour un jeu $(N, v)$
+\end{itemize}
+\end{block}
+
+\begin{block}{Formule de calcul}
+\begin{itemize}
+    \item $\phi_i(v) = \sum_{S \subseteq N \setminus \left \{ i \right \}} \frac{\left | S \right |!\left ( N- \left | S \right | -1 \right)!}{N!} \left [ v(S \cup \left \{ i \right \}) - v(S) \right ]$
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+%% Nucleolus 
+
+\subsection{Nucleolus}
+\begin{frame}{Nucleolus}
+\begin{block}{Nucleolus}
+\begin{itemize}
+    \item Un joueur donne l'allocation minimisant l'insatisfaction des joueurs par rapport à l'allocation reçue pour un jeu $(N,v)$.  
+    \item La mesure de l'insatisfaction pour une allocation $x \in \mathbb{R}^{|N|}$ est l'excès: 
+    
+    $e(x, S) = v(S) - \sum_{j\in S} x_j$
+    
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+\subsection{Rate allocation in a multiple access channel}
+\begin{frame}{Rate allocation in a multiple access channel}
+\begin{block}{Contexte}
+Répartition équitable des taux de transmission entre plusieurs utilisateurs d'un réseau sans fil utilisant un canal MAC gaussien.
+\end{block}
+\begin{block}{Modèle: Jeu de coopération $(N,v)$}
+\begin{itemize}
+  \item $N = {1,...,N}$ joueurs, utilisateurs souhaitant accéder au canal.
+        \item $v$ la somme maximale du taux de transmission qu'une coalition S peut atteindre
+\end{itemize}
+
+\end{block}
+
+\begin{block}{Propriétés}
+Super-additivité 
+\end{block}
+
+\end{frame}
+
+
+
+\begin{frame}{Rate allocation in a multiple access channel}
+\begin{block}{Objectif}
+L'allocation des capacités pour la grande coalition $v(N)$ d'une manière équitable:
+\begin{itemize}
+    \item Le coeur / core
+    \item Valeur de Shapeley
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+
+
+% ====== FIN Asmae - Jeux canoniques =====
+
+
+
+
+
+\section{Jeux de formation de coalition}
+\begin{frame}{Propriétés}
+
+\begin{block}{Propriétés}
+\begin{itemize}
+    \item Pas super additif <=> grande coalition pas toujours avantageux
+    \item Coût lié à la coopération
+    \item Plusieurs coalitions en fonction gain/coût
+    \item Structure peut changer au cours du temps (agents quittent /rejoignent d'autres coalitions en fonction du jeu)
+    \item Plusieurs méthodes de résolution, plus complexe que canoniques et dépendant de la situation étudiée
+\end{itemize}
+\end{block}
+
+\begin{block}{Applications}
+\begin{itemize}
+    \item Négociation/échange d'information pour former une coalition 
+    \item Exemple mining de cryptomonnaies comme Bitcoin
+    \item Plusieurs coalitions en fonction gain/coût
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+
+\section{Jeux de graphes de coalition}
+\begin{frame}
+\begin{block}{Propriétés}
+\begin{itemize}
+    \item Valeur coalition ne dépend pas uniquement des agents qui la composent
+    \item Importance de comment les agents sont inter-connectés
+    \item Impact important sur le jeu
+    \item Comment former le graphe => problème complexe (explosion combinatoire)
+    \item Plusieurs méthodes de résolution, basées notamment sur les jeux non-collaboratifs et des algorithmes stochastiques (solutions approchées)
+\end{itemize}
+\end{block}
+
+\begin{block}{Applications}
+\begin{itemize}
+    \item Internet/Réseaux locaux sous forme de graphes 
+    \item Design de la dispositions des antennes relais dans les réseaux sans-fil
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+
+
+\section{Conclusion}
+
+\begin{frame}{Conclusion}
+\begin{block}{Conclusion}
+\begin{itemize}
+    \item Vue d'ensemble des jeux de coalition
+    \item Nombreuses applications notamment \textbf{réseaux} 
+    \item Proposition de classification
+    \begin{itemize}
+        \item \textbf{Canoniques}
+        \item Formation de coalitions
+        \item Graphes de coalitions
+    \end{itemize}
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+
+
+\end{document}
